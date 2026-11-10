@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phantom Editor: a video editor that isn't there</title>
+<meta name="description" content="Phantom is an open-source command line that takes a YouTube video from raw recording to uploaded: trims, audio, titles, B-roll and posts included.">
+<meta property="og:title" content="Phantom Editor">
+<meta property="og:description" content="A video editor that isn't there. 54 commands that take a YouTube video from raw recording to uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://phantom.hassandev.me">
+<meta property="og:image" content="https://phantom.hassandev.me/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f1f10">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><!-- taste-skill-ignore: the mono face sets literal code and terminal output only -->
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <nav class="nav" aria-label="Main">
+    <a class="wordmark" href="#top">phantom</a>
+    <ul class="nav-links">
+      <li><a class="link" href="#pipeline">Pipeline</a></li>
+      <li><a class="link" href="#broll">B-roll</a></li>
+      <li><a class="link" href="#videos">Videos</a></li>
+      <li><a class="link" href="#commands">Commands</a></li>
+      <li><a class="link" href="https://github.com/hassanaziz0012/phantom-editor">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-copy">
+    <h1 class="display lines">
+      <span class="line"><span data-line style="--i:0">A video editor</span></span>
+      <span class="line"><span data-line style="--i:1">that isn’t there</span></span>
+    </h1>
+    <p class="hero-sub" data-rise style="--i:3">Phantom is the command line I built to take my YouTube videos from raw recording to uploaded. Trims, audio, titles, B-roll and posts included.</p>
+    <div class="actions" data-rise style="--i:4">
+      <a class="button" href="https://github.com/hassanaziz0012/phantom-editor">Star on GitHub</a>
+      <a class="link-plain" href="#pipeline">See the nine stages</a>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="term shutter" data-ui id="status">
+      <div class="term-bar">
+        <span class="term-title">Every video I’m making, and its next step</span>
+        <div class="seg" role="group" aria-label="Filter the status readout">
+          <button type="button" aria-pressed="true" data-flag="">all</button>
+          <button type="button" aria-pressed="false" data-flag="--pending">--pending</button>
+          <button type="button" aria-pressed="false" data-flag="--finished">--finished</button>
+          <button type="button" aria-pressed="false" data-flag="--less">--less</button>
+        </div>
+      </div>
+      <pre class="term-body" tabindex="0" aria-label="Output of phantom projects status"><span class="t-ok">$</span> phantom projects status<span id="status-flag"></span>
+
+<span class="full"><span class="t-info">==============================================================================</span>
+<b> YOUTUBE CONTENT PIPELINE SUMMARY</b>
+<span class="t-dim"> Directory: ~/Videos/YT Projects</span>
+<span class="t-info">==============================================================================</span>
+</span><span class="proj" data-state="pending"><span class="full"><b>1. Why I script before I record</b>
+   Stage 2/9: <b><span class="t-dim">[Scripted]</span></b>
+   Pipeline: <span class="t-ok">✓1</span> ➔ <b><span class="t-ok">[2:Script]</span></b> ➔ <span class="t-dim">3:Thumb</span> ➔ <span class="t-dim">4:Rec</span> ➔ <span class="t-dim">5:Proc</span> ➔ <span class="t-dim">6:Rev</span> ➔ <span class="t-dim">7:Ready</span> ➔ <span class="t-dim">8:Sched</span> ➔ <span class="t-dim">9:Upload</span><!-- taste-skill-ignore -->
+   <b>➜ Next Step:</b> Design the thumbnail (e.g. thumbnail.png)<!-- taste-skill-ignore -->
+   Files: [<span class="t-ok">✓ outline.md</span>] | [No raw files] | [<span class="t-dim">✗ to-review.mp4</span>] | [<span class="t-dim">✗ final.mp4</span>] | [<span class="t-dim">✗ metadata.json</span>] | [<span class="t-dim">✗ thumbnail</span>]<!-- taste-skill-ignore -->
+<span class="t-dim">------------------------------------------------------------------------------</span>
+</span><span class="less"> 2/9 <span class="t-dim">[Scripted]          </span> Why I script before I record
+      <span class="t-dim">➜ Design the thumbnail (e.g. thumbnail.png)</span><!-- taste-skill-ignore -->
+</span></span><span class="proj" data-state="pending"><span class="full"><b>2. My new app changes YouTube forever</b>
+   Stage 5/9: <b><span class="t-warn">[Processed]</span></b>
+   Pipeline: <span class="t-ok">✓1</span> ➔ <span class="t-ok">✓2</span> ➔ <span class="t-ok">✓3</span> ➔ <span class="t-ok">✓4</span> ➔ <b><span class="t-ok">[5:Proc]</span></b> ➔ <span class="t-dim">6:Rev</span> ➔ <span class="t-dim">7:Ready</span> ➔ <span class="t-dim">8:Sched</span> ➔ <span class="t-dim">9:Upload</span><!-- taste-skill-ignore -->
+   <b>➜ Next Step:</b> Review video and export final.mp4<!-- taste-skill-ignore -->
+   Files: [<span class="t-ok">✓ outline.md</span>] | [1 raw file(s)] | [<span class="t-ok">✓ to-review.mp4</span>] | [<span class="t-dim">✗ final.mp4</span>] | [<span class="t-dim">✗ metadata.json</span>] | [<span class="t-ok">✓ thumbnail (thumbnail.png)</span>]<!-- taste-skill-ignore -->
+<span class="t-dim">------------------------------------------------------------------------------</span>
+</span><span class="less"> 5/9 <span class="t-warn">[Processed]         </span> My new app changes YouTube forever
+      <span class="t-dim">➜ Review video and export final.mp4</span><!-- taste-skill-ignore -->
+</span></span><span class="proj" data-state="pending"><span class="full"><b>3. Terminals are easy, actually</b>
+   Stage 7/9: <b><span class="t-info">[Ready to Schedule]</span></b>
+   Pipeline: <span class="t-ok">✓1</span> ➔ <span class="t-ok">✓2</span> ➔ <span class="t-ok">✓3</span> ➔ <span class="t-ok">✓4</span> ➔ <span class="t-ok">✓5</span> ➔ <span class="t-ok">✓6</span> ➔ <b><span class="t-ok">[7:Ready]</span></b> ➔ <span class="t-dim">8:Sched</span> ➔ <span class="t-dim">9:Upload</span><!-- taste-skill-ignore -->
+   <b>➜ Next Step:</b> Upload video to YouTube (`phantom publish yt`) or set publishDate in metadata.json<!-- taste-skill-ignore -->
+   Files: [<span class="t-ok">✓ outline.md</span>] | [2 raw file(s)] | [<span class="t-ok">✓ to-review.mp4</span>] | [<span class="t-ok">✓ final.mp4</span>] | [<span class="t-ok">✓ metadata.json</span>] | [<span class="t-ok">✓ thumbnail (thumbnail.png)</span>]<!-- taste-skill-ignore -->
+<span class="t-dim">------------------------------------------------------------------------------</span>
+</span><span class="less"> 7/9 <span class="t-info">[Ready to Schedule] </span> Terminals are easy, actually
+      <span class="t-dim">➜ Upload video to YouTube (`phantom publish yt`) or set publishDate in metadata.json</span><!-- taste-skill-ignore -->
+</span></span><span class="proj" data-state="finished"><span class="full"><b>4. Six weeks of content in one sitting</b>
+   Stage 9/9: <b><span class="t-ok">[Uploaded]</span></b>
+   Pipeline: <span class="t-ok">✓1</span> ➔ <span class="t-ok">✓2</span> ➔ <span class="t-ok">✓3</span> ➔ <span class="t-ok">✓4</span> ➔ <span class="t-ok">✓5</span> ➔ <span class="t-ok">✓6</span> ➔ <span class="t-ok">✓7</span> ➔ <span class="t-ok">✓8</span> ➔ <b><span class="t-ok">[9:Upload]</span></b><!-- taste-skill-ignore -->
+   <b>➜ Next Step:</b> Pipeline complete!<!-- taste-skill-ignore -->
+   Files: [<span class="t-ok">✓ outline.md</span>] | [1 raw file(s)] | [<span class="t-ok">✓ to-review.mp4</span>] | [<span class="t-ok">✓ final.mp4</span>] | [<span class="t-ok">✓ metadata.json (Uploaded: 2026-10-20)</span>] | [<span class="t-ok">✓ thumbnail (thumbnail.png)</span>]<!-- taste-skill-ignore -->
+<span class="t-dim">------------------------------------------------------------------------------</span>
+</span><span class="less"> 9/9 <span class="t-ok">[Uploaded]          </span> Six weeks of content in one sitting
+      <span class="t-dim">➜ Pipeline complete!</span><!-- taste-skill-ignore -->
+</span></span></pre>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="pipeline" id="pipeline" aria-labelledby="clause">
+  <div class="pipe-left">
+    <h2 class="display" id="clause" aria-live="polite">Fifth, run<br>one command</h2>
+    <p class="pipe-text" id="stage-text">Seven steps: transcribe, trim the silences, clean the audio, encode once, verify, review, write the metadata.</p>
+  </div>
+  <div class="pipe-right">
+    <div class="term folder" data-ui>
+      <pre class="term-body"><span class="t-dim">~/Videos/YT Projects/</span>
+<b>My new app changes YouTube forever</b>
+Stage <span id="stage-n">5</span>/9: <b class="t-ok">[<span id="stage-label">Processed</span>]</b>
+
+<span class="frow is-there" data-from="2">  <span class="mark"></span> outline.md</span>
+<span class="frow is-there" data-from="3">  <span class="mark"></span> thumbnail.png</span>
+<span class="frow is-there" data-from="4">  <span class="mark"></span> raw.mp4</span>
+<span class="frow is-there" data-from="5">  <span class="mark"></span> to-review.mp4</span>
+<span class="frow" data-from="6">  <span class="mark"></span> final.mp4</span>
+<span class="frow" data-from="7">  <span class="mark"></span> metadata.json</span>
+<span class="frow" data-from="8">  <span class="mark"></span> publishDate</span>
+<span class="frow" data-from="9">  <span class="mark"></span> YouTube URL</span>
+
+<b>➜ Next step:</b> <span id="stage-next">Review video and export final.mp4</span><!-- taste-skill-ignore -->
+<span class="t-ok">$</span> <span id="stage-cmd">phantom edit inspect-video to-review.mp4</span></pre>
+    </div>
+  </div>
+  <div class="pipe-slider">
+    <label class="sr-only" for="stage">Stage of the video, one to nine</label>
+    <div class="track" id="track" style="--p:0.5"><span class="track-fill"></span><input type="range" id="stage" min="1" max="9" step="1" value="5"></div>
+    <ol class="stage-names">
+      <li><button type="button" data-go="1">New</button></li>
+      <li><button type="button" data-go="2">Scripted</button></li>
+      <li><button type="button" data-go="3">Thumbnail</button></li>
+      <li><button type="button" data-go="4">Recorded</button></li>
+      <li class="is-on"><button type="button" data-go="5">Processed</button></li>
+      <li><button type="button" data-go="6">Reviewed</button></li>
+      <li><button type="button" data-go="7">Ready</button></li>
+      <li><button type="button" data-go="8">Scheduled</button></li>
+      <li><button type="button" data-go="9">Uploaded</button></li>
+    </ol>
+  </div>
+  <script type="application/json" id="stage-data">[{"name":"New","clause":"First, name<br>the video","label":"New","text":"One command makes the project folder that every later step reads from and writes to.","next":"Write outline.md","cmd":"phantom projects newvideo \"My new app changes YouTube forever\""},{"name":"Scripted","clause":"Second, write<br>the outline","label":"Scripted","text":"outline.md counts as a script once it has a hook, an outline and a marker for where the video asks for the like.","next":"Design the thumbnail (e.g. thumbnail.png)","cmd":"phantom projects status --scripted"},{"name":"Thumbnail","clause":"Third, design<br>the thumbnail","label":"Added Thumbnail","text":"The thumbnail comes before the camera. It is easier to record a video that delivers on a strong thumbnail than the reverse.","next":"Record raw footage that delivers on the thumbnail","cmd":"phantom meta titles --thumbnail \"before and after\""},{"name":"Recorded","clause":"Fourth, record<br>the footage","label":"Recorded","text":"One pre-composed recording goes in the folder. Bad takes go in cuts.txt, one time range per line.","next":"Run phantom projects process","cmd":"phantom projects process raw.mp4 --bgm lofi-chill"},{"name":"Processed","clause":"Fifth, run<br>one command","label":"Processed","text":"Seven steps: transcribe, trim the silences, clean the audio, encode once, verify, review, write the metadata.","next":"Review video and export final.mp4","cmd":"phantom edit inspect-video to-review.mp4"},{"name":"Reviewed","clause":"Sixth, watch<br>it back","label":"Reviewed","text":"You watch the cut. Phantom has already scanned it for black frames, frozen frames and bad audio.","next":"Fill in the missing keys of metadata.json","cmd":"phantom meta approve-title \"My new app changes YouTube forever\" 2"},{"name":"Ready","clause":"Seventh, pick<br>a title","label":"Ready to Schedule","text":"Titles arrive scored and ranked. Nothing uploads until one is approved and every promised link has a URL.","next":"Upload to YouTube or set publishDate in metadata.json","cmd":"phantom meta read --json"},{"name":"Scheduled","clause":"Eighth, set<br>the date","label":"Scheduled","text":"A publishDate in metadata.json uploads the video private and lets YouTube make it public on the day.","next":"Upload video to YouTube, scheduled for 2026-11-12","cmd":"phantom publish yt final.mp4 --playlist \"Automation Tips\""},{"name":"Uploaded","clause":"Ninth, publish<br>everywhere","label":"Uploaded","text":"The upload sets the thumbnail and playlist, then sends the tweet, the Substack note and the email. One failing never skips the rest.","next":"Pipeline complete!","cmd":"phantom projects status --finished"}]</script>
+</section>
+
+<section class="outputs" id="outputs" aria-labelledby="outputs-h">
+  <div class="outputs-head wrap">
+    <h2 class="head" id="outputs-h" data-reveal>What one run leaves behind</h2>
+    <div class="arrows" data-reveal>
+      <button type="button" class="sq" id="out-prev" aria-label="Previous output"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M19 12H6M12 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></button>
+      <button type="button" class="sq" id="out-next" aria-label="Next output"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></button>
+    </div>
+  </div>
+  <div class="row" id="out-row" tabindex="0" aria-label="Files and reports from one run">
+    <figure class="out">
+      <div class="term" data-ui>
+        <div class="term-bar"><span class="term-title">cuts.txt</span></div>
+        <pre class="term-body"><span class="t-dim"># the coughing fit</span>
+00:27-00:35
+<span class="t-dim"># said the wrong model name</span>
+06:25-06:35
+02:05-02:17.5</pre>
+      </div>
+      <figcaption>
+        <h3 class="lead">Bad takes, cut from a text file</h3>
+        <p>One start and end per line, on the raw recording’s timeline. The ranges come out in the same single encode, so they cost nothing extra.</p>
+      </figcaption>
+    </figure>
+    <figure class="out is-lit">
+      <div class="term" data-ui>
+        <div class="term-bar"><span class="term-title">summary.md</span></div>
+        <pre class="term-body"><b># phantom pipeline</b>
+Input: raw.mp4 (1920x1080, 30fps) -> final.mp4 (07:31)
+Cuts (cuts.txt): 00:27-00:35, 06:25-06:35
+
+<b>## Review flags</b>
+<span class="t-ok">none</span>
+
+<b>## Timing</b>
+Transcription              8.1s
+Speech Extraction          5.4s
+Audio Processing          1m03s
+Final Encode & Multiplex  4m00s
+Verify Final               0.2s
+Audio & Video Review      39.6s
+Auto Create Metadata      2m21s
+<b>total                     7m29s</b></pre>
+      </div>
+      <figcaption>
+        <h3 class="lead">One command, seven steps</h3>
+        <p>The run report for a real 7 minute video. The video is encoded once, at the end, straight from the source. A finished step is skipped on the next run.</p>
+      </figcaption>
+    </figure>
+    <figure class="out">
+      <div class="term" data-ui>
+        <div class="term-bar"><span class="term-title">process_audio.sh</span></div>
+        <pre class="term-body"><span class="t-dim"># 1. extract   2. denoise   3. normalise   4. remux</span>
+deep-filter raw-audio.wav
+ffmpeg -i filtered.wav \
+  -af <span class="t-ok">"loudnorm=I=-16:TP=-1.5:LRA=11"</span> \
+  -ar 48000 processed-audio.wav</pre>
+      </div>
+      <figcaption>
+        <h3 class="lead">Every video at the same loudness</h3>
+        <p>DeepFilterNet takes the room noise out, then loudnorm brings the voice to −16 LUFS with a true peak of −1.5 dB. The video stream is copied, never re-encoded.</p>
+      </figcaption>
+    </figure>
+    <figure class="out">
+      <div class="term" data-ui>
+        <div class="term-bar"><span class="term-title">phantom edit inspect-video</span></div>
+        <pre class="term-body">====================================================
+<b>VIDEO QUALITY CONTROL INSPECTION REPORT</b>
+====================================================
+Resolution:      1920x1080 (1080p Full HD)
+Aspect Ratio:    16:9 [Ratio: 1.78]
+Duration:        00:07:31.000
+Frame Rate:      30.00 fps
+----------------------------------------------------
+  • Black Detect:  min_duration=0.1s
+  • Freeze Detect: min_duration=0.5s
+----------------------------------------------------
+<span class="t-ok">SUCCESS: No video glitches or bad frames detected</span></pre>
+      </div>
+      <figcaption>
+        <h3 class="lead">A check before anyone sees it</h3>
+        <p>ffmpeg’s blackdetect and freezedetect scan the final file and print the exact timestamp of anything wrong, ready to find in an editor.</p>
+      </figcaption>
+    </figure>
+    <figure class="out">
+      <div class="term" data-ui>
+        <div class="term-bar"><span class="term-title">phantom meta approve-title</span></div>
+        <pre class="term-body"><b>My new app changes YouTube forever</b>
+   Current title <span class="t-warn">(not approved)</span>
+   1. <span class="t-ok">[14/16]</span> I Built the App YouTube Should Have Shipped  <span class="t-dim">(44 chars)</span>
+   2. <span class="t-ok">[13/16]</span> This App Replaced My Video Editor  <span class="t-dim">(33 chars)</span>
+   3. [13/16] Why I Stopped Editing My Own Videos  <span class="t-dim">(35 chars)</span>
+   4. [12/16] One Command Now Edits My Whole Video  <span class="t-dim">(36 chars)</span>
+   5. [12/16] My Editing Workflow Is a Terminal Now  <span class="t-dim">(37 chars)</span></pre>
+      </div>
+      <figcaption>
+        <h3 class="lead">Titles, scored out of sixteen</h3>
+        <p>Claude drafts the titles and scores each on eight counts, from clarity to honesty. The top one is a placeholder until a person approves it.</p>
+      </figcaption>
+    </figure>
+    <figure class="out">
+      <div class="term" data-ui>
+        <div class="term-bar"><span class="term-title">metadata.json</span></div>
+        <pre class="term-body">{
+  <span class="t-info">"title"</span>: "How Semantic Caching Works and How to Use It",
+  <span class="t-info">"titleReviewed"</span>: true,
+  <span class="t-info">"timestamps"</span>: [
+    { "timestamp": "00:00", "topic": "The Repeat Question Problem" },
+    { "timestamp": "00:40", "topic": "Who Should Use Semantic Caching" },
+    { "timestamp": "01:35", "topic": "Semantic Caching Flow Example" }
+  ],
+  <span class="t-info">"tweetTemplate"</span>: "... {url}",
+  <span class="t-info">"resources"</span>: [ ... ],
+  <span class="t-info">"recommendations"</span>: [ ... ]
+}</pre>
+      </div>
+      <figcaption>
+        <h3 class="lead">Everything YouTube asks for</h3>
+        <p>Description, chapters, tweet, next-video picks and resource links, all written from the trimmed captions so a cut take never reaches them.</p>
+      </figcaption>
+    </figure>
+    <figure class="out">
+      <div class="term" data-ui>
+        <div class="term-bar"><span class="term-title">phantom projects status --repackage</span></div>
+        <pre class="term-body"><b>Six weeks of content in one sitting</b>
+   Stage 10: <b><span class="t-bad">[Needs Repackaging]</span></b>
+   <b>➜ Next Step:</b> Rework the title & thumbnail:<!-- taste-skill-ignore -->
+     CTR 2.1% in its first 2 days
+     < channel's 28-day 3.4%
+   Files: [<span class="t-ok">✓ final.mp4</span>] | [<span class="t-ok">✓ metadata.json</span>]</pre><!-- taste-skill-ignore -->
+      </div>
+      <figcaption>
+        <h3 class="lead">A second look after 48 hours</h3>
+        <p>Two days after publishing, the video’s click-through rate is read from YouTube Studio and set against the channel’s 28-day figure. A weak one is flagged for a new title and thumbnail.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="broll" id="broll" aria-labelledby="broll-h">
+  <div class="broll-field" id="broll-field" data-theme="dark">
+    <video id="broll-video" class="shutter" data-reveal muted loop playsinline autoplay preload="metadata" poster="assets/broll/step-dark.jpg" src="assets/broll/step-dark.mp4" width="1280" height="720" aria-label="A B-roll clip rendered by phantom broll"></video>
+    <p class="field-note" id="broll-note">step-card, rendered by phantom</p>
+  </div>
+  <div class="broll-col">
+    <div class="broll-intro">
+      <h2 class="head" id="broll-h" data-reveal>B-roll, timed to the words</h2>
+      <p data-reveal>Each template is built once. Per video I write a small cue file and run one command, and every clip lands on the exact word that starts it. It costs no LLM tokens.</p>
+      <p data-reveal>These five clips were rendered by Phantom for this page, in this page’s colours.</p>
+      <div class="seg seg-page" role="group" aria-label="Theme of the clips" data-reveal>
+        <button type="button" aria-pressed="true" data-theme="dark">Dark theme</button>
+        <button type="button" aria-pressed="false" data-theme="light">Light theme</button>
+      </div>
+    </div>
+    <article class="clip" data-clip="step" data-name="step-card">
+      <h3 class="lead">A numbered point, on cue</h3>
+      <p>Step 2 of 7, red flag number 3, tip number 7. The label is a pattern and the title fits itself to the frame, from 112 pixels down to 56.</p>
+      <pre class="cmd" tabindex="0"><code>phantom broll clip step-card -o step-2.mp4 \
+  --cue "so number two" --until "every single pause" \
+  --var number=2 --var total=7 \
+  --var "title=Trim every silence"</code></pre>
+      <button type="button" class="button button-quiet" data-play="step">Play step-card</button>
+    </article>
+    <article class="clip" data-clip="stat" data-name="big-stat">
+      <h3 class="lead">One number, counted up</h3>
+      <p>Write the value the way it should read. The digits roll up like an odometer, and the words around them sit small on the same baseline.</p>
+      <pre class="cmd" tabindex="0"><code>phantom broll clip big-stat -o stat.mp4 \
+  --cue "forty eight hours" \
+  --var "value=48 hours" \
+  --var "label=before a weak title gets flagged"</code></pre>
+      <button type="button" class="button button-quiet" data-play="stat">Play big-stat</button>
+    </article>
+    <article class="clip" data-clip="term" data-name="terminal">
+      <h3 class="lead">A command, typed out</h3>
+      <p>Typed with a human rhythm that is the same on every render. Output lines can print on the beat of the words that mention them.</p>
+      <pre class="cmd" tabindex="0"><code>phantom broll clip terminal -o run.mp4 \
+  --cue "you run one command" \
+  --var "command=phantom projects process raw.mp4 --bgm lofi-chill" \
+  --var "output=[dim]Trimming silences...\n[green]final.mp4 written"</code></pre>
+      <button type="button" class="button button-quiet" data-play="term">Play terminal</button>
+    </article>
+    <article class="clip" data-clip="flow" data-name="flow">
+      <h3 class="lead">Boxes that light in turn</h3>
+      <p>Two to six steps joined by arrows: the agent loop, a request on its way to a database, or this whole pipeline in four words.</p>
+      <pre class="cmd" tabindex="0"><code>phantom broll clip flow -o flow.mp4 \
+  --cue "the whole thing is four steps" \
+  --var "steps=Record|Fix mistakes|Process|Publish"</code></pre>
+      <button type="button" class="button button-quiet" data-play="flow">Play flow</button>
+    </article>
+    <article class="clip" data-clip="check" data-name="checklist">
+      <h3 class="lead">A list that ticks itself</h3>
+      <p>Items get a tick or a cross as each one is said. Good for what to review, what never to automate, and what counts as done.</p>
+      <pre class="cmd" tabindex="0"><code>phantom broll clip checklist -o ready.mp4 \
+  --cue "ready to schedule when" \
+  --var "title=Ready to schedule when" \
+  --var "items=final.mp4 exists|metadata.json is complete|a thumbnail is there"</code></pre>
+      <button type="button" class="button button-quiet" data-play="check">Play checklist</button>
+    </article>
+  </div>
+</section>
+
+<section class="videos" id="videos" aria-labelledby="videos-h">
+  <div class="ledger">
+    <h2 class="lead" id="videos-h" data-reveal>Videos it has shipped</h2>
+    <p class="ledger-note" data-reveal>Every one of these went through the pipeline, from raw.mp4 to the upload. Autumn 2026.</p>
+    <ol class="rows">
+      <li data-reveal style="--i:0">
+        <a class="vrow" href="https://www.youtube.com/watch?v=PoWbjNE51hM" data-thumb="0">
+          <img class="vphone" src="assets/thumbs/PoWbjNE51hM.jpg" alt="Thumbnail of the video Got blocked on X for this AI take" width="1280" height="720" loading="lazy">
+          <span class="vtitle">Got blocked on X for this AI take</span>
+          <span class="vlen nums">8:03</span>
+          <span class="vdate nums">7 Nov</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:1">
+        <a class="vrow" href="https://www.youtube.com/watch?v=3gU_BA_19f0" data-thumb="1">
+          <img class="vphone" src="assets/thumbs/3gU_BA_19f0.jpg" alt="Thumbnail of the video How Semantic Caching Works and How to Use It" width="1280" height="720" loading="lazy">
+          <span class="vtitle">How Semantic Caching Works and How to Use It</span>
+          <span class="vlen nums">13:00</span>
+          <span class="vdate nums">6 Nov</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:2">
+        <a class="vrow" href="https://www.youtube.com/watch?v=dG2Qt2qaDeA" data-thumb="2">
+          <img class="vphone" src="assets/thumbs/dG2Qt2qaDeA.jpg" alt="Thumbnail of the video 7 everyday tasks worth automating with AI agents in 2026" width="1280" height="720" loading="lazy">
+          <span class="vtitle">7 everyday tasks worth automating with AI agents in 2026</span>
+          <span class="vlen nums">7:31</span>
+          <span class="vdate nums">3 Nov</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:3">
+        <a class="vrow" href="https://www.youtube.com/watch?v=oEJuPIljJ3k" data-thumb="3">
+          
+          <span class="vtitle">How Prompt Caching works and how to use it</span>
+          <span class="vlen nums">12:58</span>
+          <span class="vdate nums">2 Nov</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:4">
+        <a class="vrow" href="https://www.youtube.com/watch?v=n8GsW6R1Jw8" data-thumb="4">
+          
+          <span class="vtitle">This one trick fixed my Claude prompts</span>
+          <span class="vlen nums">2:32</span>
+          <span class="vdate nums">26 Oct</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:5">
+        <a class="vrow" href="https://www.youtube.com/watch?v=s3v5FbTtvTI" data-thumb="5">
+          
+          <span class="vtitle">Everything is falling apart</span>
+          <span class="vlen nums">6:52</span>
+          <span class="vdate nums">23 Oct</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:6">
+        <a class="vrow" href="https://www.youtube.com/watch?v=hmfv85pG-ec" data-thumb="6">
+          
+          <span class="vtitle">Watch me edit 6 weeks of content in 3m48s</span>
+          <span class="vlen nums">3:48</span>
+          <span class="vdate nums">20 Oct</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:7">
+        <a class="vrow" href="https://www.youtube.com/watch?v=1J6pajNZRvs" data-thumb="7">
+          
+          <span class="vtitle">Terminal Fundamentals For Vibe Coders In 20 Minutes</span>
+          <span class="vlen nums">20:19</span>
+          <span class="vdate nums">17 Oct</span>
+        </a>
+      </li>
+      <li data-reveal style="--i:8">
+        <a class="vrow" href="https://www.youtube.com/watch?v=GloEbjj45Oo" data-thumb="8">
+          
+          <span class="vtitle">How I Would Learn To Code In 2026</span>
+          <span class="vlen nums">12:49</span>
+          <span class="vdate nums">14 Oct</span>
+        </a>
+      </li>
+    </ol>
+  </div>
+  <div class="preview" id="preview" aria-hidden="true">
+    <img class="is-on" src="assets/thumbs/PoWbjNE51hM.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/3gU_BA_19f0.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/dG2Qt2qaDeA.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/oEJuPIljJ3k.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/n8GsW6R1Jw8.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/s3v5FbTtvTI.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/hmfv85pG-ec.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/1J6pajNZRvs.jpg" alt="" width="1280" height="720" loading="lazy">
+    <img src="assets/thumbs/GloEbjj45Oo.jpg" alt="" width="1280" height="720" loading="lazy">
+  </div>
+</section>
+
+<section class="commands wrap" id="commands" aria-labelledby="commands-h">
+  <div class="commands-head">
+    <h2 class="head" id="commands-h" data-reveal>All 54 commands,<br>in eight groups</h2>
+    <a class="button" href="https://github.com/hassanaziz0012/phantom-editor#readme" data-reveal>Read the source</a>
+  </div>
+  <div class="agenda">
+    <div class="tabs" role="tablist" aria-label="Command groups">
+      <button type="button" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="true" ><span class="tab-name">projects</span><span class="tab-what">4 commands</span></button>
+      <button type="button" role="tab" id="tab-edit" aria-controls="panel-edit" aria-selected="false" tabindex="-1"><span class="tab-name">edit</span><span class="tab-what">8 commands</span></button>
+      <button type="button" role="tab" id="tab-meta" aria-controls="panel-meta" aria-selected="false" tabindex="-1"><span class="tab-name">meta</span><span class="tab-what">11 commands</span></button>
+      <button type="button" role="tab" id="tab-publish" aria-controls="panel-publish" aria-selected="false" tabindex="-1"><span class="tab-name">publish</span><span class="tab-what">7 commands</span></button>
+      <button type="button" role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false" tabindex="-1"><span class="tab-name">research</span><span class="tab-what">8 commands</span></button>
+      <button type="button" role="tab" id="tab-ideas" aria-controls="panel-ideas" aria-selected="false" tabindex="-1"><span class="tab-name">ideas</span><span class="tab-what">4 commands</span></button>
+      <button type="button" role="tab" id="tab-yt" aria-controls="panel-yt" aria-selected="false" tabindex="-1"><span class="tab-name">yt</span><span class="tab-what">8 commands</span></button>
+      <button type="button" role="tab" id="tab-broll" aria-controls="panel-broll" aria-selected="false" tabindex="-1"><span class="tab-name">broll</span><span class="tab-what">4 commands</span></button>
+    </div>
+    <div class="panels">
+      <div class="panel" role="tabpanel" id="panel-projects" aria-labelledby="tab-projects">
+        <h3 class="panel-h">phantom projects <span>The pipeline</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">status</span>
+            <span class="band-main"><span class="band-what">See every video and its next step</span><code>phantom projects status [--pending] [--finished] [--less] [--json]</code></span>
+            <span class="band-engine">Google Sheets</span>
+          </li>
+          <li class="band">
+            <span class="band-name">process</span>
+            <span class="band-main"><span class="band-what">Turn a raw recording into final.mp4</span><code>phantom projects process &lt;raw_video&gt; [--bgm &lt;track&gt;] [--force]</code></span>
+            <span class="band-engine">ffmpeg, Silero VAD</span>
+          </li>
+          <li class="band">
+            <span class="band-name">newvideo</span>
+            <span class="band-main"><span class="band-what">Create a project folder</span><code>phantom projects newvideo &lt;project_name&gt;</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">cleanup</span>
+            <span class="band-main"><span class="band-what">Archive everything but the media</span><code>phantom projects cleanup [&lt;project_path&gt;] [--full]</code></span>
+            <span class="band-engine"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="panel-edit" aria-labelledby="tab-edit" data-off>
+        <h3 class="panel-h">phantom edit <span>Audio and video</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">trim-silences</span>
+            <span class="band-main"><span class="band-what">Cut the pauses out of a recording</span><code>phantom edit trim-silences &lt;video_path&gt;</code></span>
+            <span class="band-engine">Silero VAD</span>
+          </li>
+          <li class="band">
+            <span class="band-name">process-audio</span>
+            <span class="band-main"><span class="band-what">Denoise and normalise to −16 LUFS</span><code>phantom edit process-audio [-R|--recursive] &lt;path&gt;</code></span>
+            <span class="band-engine">DeepFilterNet, loudnorm</span>
+          </li>
+          <li class="band">
+            <span class="band-name">add-bgm</span>
+            <span class="band-main"><span class="band-what">Loop a music track under a video</span><code>phantom edit add-bgm &lt;video&gt; &lt;bgm_track&gt; [--volume &lt;percentage&gt;]</code></span>
+            <span class="band-engine">ffmpeg</span>
+          </li>
+          <li class="band">
+            <span class="band-name">caption</span>
+            <span class="band-main"><span class="band-what">Transcribe and burn in captions</span><code>phantom edit caption &lt;video_path&gt; [--preset shorts|longs]</code></span>
+            <span class="band-engine">Whisper on Groq</span>
+          </li>
+          <li class="band">
+            <span class="band-name">transcribe-cloud</span>
+            <span class="band-main"><span class="band-what">Write an .srt from the audio</span><code>phantom edit transcribe-cloud &lt;video_path&gt;</code></span>
+            <span class="band-engine">Whisper on Groq</span>
+          </li>
+          <li class="band">
+            <span class="band-name">inspect-video</span>
+            <span class="band-main"><span class="band-what">Scan for black and frozen frames</span><code>phantom edit inspect-video &lt;video_path&gt; [--black-duration &lt;s&gt;]</code></span>
+            <span class="band-engine">ffprobe</span>
+          </li>
+          <li class="band">
+            <span class="band-name">review-audio</span>
+            <span class="band-main"><span class="band-what">Flag audio problems before publishing</span><code>phantom edit review-audio &lt;video_or_audio_path&gt;</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">downscale</span>
+            <span class="band-main"><span class="band-what">Bring a video down to 1080p</span><code>phantom edit downscale &lt;video_path&gt; [-o &lt;output&gt;]</code></span>
+            <span class="band-engine">ffmpeg</span>
+          </li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="panel-meta" aria-labelledby="tab-meta" data-off>
+        <h3 class="panel-h">phantom meta <span>Titles and metadata</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">create</span>
+            <span class="band-main"><span class="band-what">Write the whole metadata.json</span><code>phantom meta create [&lt;project_path&gt;] [--skip-ai]</code></span>
+            <span class="band-engine">Claude</span>
+          </li>
+          <li class="band">
+            <span class="band-name">titles</span>
+            <span class="band-main"><span class="band-what">Generate and score title ideas</span><code>phantom meta titles [--traffic search|browse|both] [--channel-size small|mid|large]</code></span>
+            <span class="band-engine">Claude</span>
+          </li>
+          <li class="band">
+            <span class="band-name">approve-title</span>
+            <span class="band-main"><span class="band-what">List the titles and approve one</span><code>phantom meta approve-title &lt;project&gt; [&lt;rank_or_title&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">desc</span>
+            <span class="band-main"><span class="band-what">Write a two or three sentence description</span><code>phantom meta desc [&lt;project_path&gt;]</code></span>
+            <span class="band-engine">Claude</span>
+          </li>
+          <li class="band">
+            <span class="band-name">tweet</span>
+            <span class="band-main"><span class="band-what">Draft the launch tweet, under 240 characters</span><code>phantom meta tweet [&lt;project_path&gt;]</code></span>
+            <span class="band-engine">Claude</span>
+          </li>
+          <li class="band">
+            <span class="band-name">timestamps</span>
+            <span class="band-main"><span class="band-what">Turn captions into chapters</span><code>phantom meta timestamps [&lt;captions_srt_path&gt;]</code></span>
+            <span class="band-engine">Claude</span>
+          </li>
+          <li class="band">
+            <span class="band-name">resources</span>
+            <span class="band-main"><span class="band-what">List the links the video promised</span><code>phantom meta resources [&lt;project_path&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">recommend</span>
+            <span class="band-main"><span class="band-what">Pick the videos to send viewers to next</span><code>phantom meta recommend [&lt;project_path&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">prepare-recommendations</span>
+            <span class="band-main"><span class="band-what">Index the channel for recommendations</span><code>phantom meta prepare-recommendations [&lt;channel&gt;] [--limit &lt;int&gt;] [--fresh]</code></span>
+            <span class="band-engine">YouTube Data API</span>
+          </li>
+          <li class="band">
+            <span class="band-name">read</span>
+            <span class="band-main"><span class="band-what">Print a project’s metadata</span><code>phantom meta read [&lt;project_or_video_path&gt;] [--json]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">manual</span>
+            <span class="band-main"><span class="band-what">Fill in the metadata by hand</span><code>phantom meta manual &lt;video_path&gt;</code></span>
+            <span class="band-engine"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="panel-publish" aria-labelledby="tab-publish" data-off>
+        <h3 class="panel-h">phantom publish <span>Posting</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">yt</span>
+            <span class="band-main"><span class="band-what">Upload with thumbnail, playlist and schedule</span><code>phantom publish yt &lt;video_path&gt; [--playlist &lt;name&gt;] [--title &lt;rank_or_title&gt;]</code></span>
+            <span class="band-engine">YouTube Data API</span>
+          </li>
+          <li class="band">
+            <span class="band-name">x</span>
+            <span class="band-main"><span class="band-what">Post a tweet, with an image if you like</span><code>phantom publish x [--image] [--substack] &lt;tweet_content&gt;</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">substack</span>
+            <span class="band-main"><span class="band-what">Post a Substack note</span><code>phantom publish substack [&lt;text&gt;] [-i &lt;images&gt;...] [-v &lt;video&gt;]</code></span>
+            <span class="band-engine">Playwright</span>
+          </li>
+          <li class="band">
+            <span class="band-name">linkedin</span>
+            <span class="band-main"><span class="band-what">Share a LinkedIn post</span><code>phantom publish linkedin [&lt;text&gt;] [-f &lt;file&gt;] [--url &lt;url&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">devto</span>
+            <span class="band-main"><span class="band-what">Publish, schedule or draft from Markdown</span><code>phantom publish devto &lt;markdown_file&gt; [--tags &lt;tags&gt;...] [--schedule "YYYY-MM-DD HH:MM"]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">email</span>
+            <span class="band-main"><span class="band-what">Send the broadcast to subscribers</span><code>phantom publish email --title &lt;title&gt; --description &lt;desc&gt; --url &lt;url&gt;</code></span>
+            <span class="band-engine">Resend</span>
+          </li>
+          <li class="band">
+            <span class="band-name">yap</span>
+            <span class="band-main"><span class="band-what">Turn a spoken ramble into a post</span><code>phantom publish yap --platform &lt;linkedin|substack&gt;</code></span>
+            <span class="band-engine"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="panel-research" aria-labelledby="tab-research" data-off>
+        <h3 class="panel-h">phantom research <span>Reddit and Skool</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">reddit post</span>
+            <span class="band-main"><span class="band-what">Scrape a post and its comments</span><code>phantom research reddit post &lt;url&gt; [--max-comments &lt;int&gt;] [--json]</code></span>
+            <span class="band-engine">Playwright</span>
+          </li>
+          <li class="band">
+            <span class="band-name">reddit analyze</span>
+            <span class="band-main"><span class="band-what">Read the mood of a thread</span><code>phantom research reddit analyze &lt;url&gt; [--json]</code></span>
+            <span class="band-engine">Groq</span>
+          </li>
+          <li class="band">
+            <span class="band-name">reddit sub</span>
+            <span class="band-main"><span class="band-what">Scrape a subreddit feed</span><code>phantom research reddit sub &lt;subreddit&gt; [--best|--hot] [--limit &lt;int&gt;]</code></span>
+            <span class="band-engine">Playwright</span>
+          </li>
+          <li class="band">
+            <span class="band-name">reddit search</span>
+            <span class="band-main"><span class="band-what">Scrape search results</span><code>phantom research reddit search &lt;query&gt; [--sort &lt;sort&gt;] [--time &lt;time&gt;]</code></span>
+            <span class="band-engine">Playwright</span>
+          </li>
+          <li class="band">
+            <span class="band-name">reddit profile</span>
+            <span class="band-main"><span class="band-what">Scrape a user’s posts and comments</span><code>phantom research reddit profile &lt;username_or_url&gt; [--posts &lt;int&gt;]</code></span>
+            <span class="band-engine">Playwright</span>
+          </li>
+          <li class="band">
+            <span class="band-name">reddit serve</span>
+            <span class="band-main"><span class="band-what">Answer scrape requests as JSON lines</span><code>phantom research reddit serve [--port &lt;int&gt;] [--headless]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">skool post</span>
+            <span class="band-main"><span class="band-what">Scrape a Skool post</span><code>phantom research skool post &lt;url&gt; [--max-comments &lt;int&gt;] [--json]</code></span>
+            <span class="band-engine">Playwright</span>
+          </li>
+          <li class="band">
+            <span class="band-name">skool community</span>
+            <span class="band-main"><span class="band-what">Scrape a community’s feed</span><code>phantom research skool community &lt;url_or_slug&gt; [--limit &lt;int&gt;]</code></span>
+            <span class="band-engine">Playwright</span>
+          </li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="panel-ideas" aria-labelledby="tab-ideas" data-off>
+        <h3 class="panel-h">phantom ideas <span>What to make next</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">from-comments</span>
+            <span class="band-main"><span class="band-what">Turn a video’s comments into ideas</span><code>phantom ideas from-comments &lt;video&gt; [--limit &lt;int&gt;] [--order relevance|time]</code></span>
+            <span class="band-engine">Claude</span>
+          </li>
+          <li class="band">
+            <span class="band-name">from-outlier</span>
+            <span class="band-main"><span class="band-what">Turn an outlier video into ideas</span><code>phantom ideas from-outlier &lt;video&gt; [--fresh-summary] [--json]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">export</span>
+            <span class="band-main"><span class="band-what">Send ideas to the Google Sheet</span><code>phantom ideas export [--file &lt;path&gt; | --idea &lt;text&gt;]</code></span>
+            <span class="band-engine">Google Sheets</span>
+          </li>
+          <li class="band">
+            <span class="band-name">archive</span>
+            <span class="band-main"><span class="band-what">Archive the ideas already reviewed</span><code>phantom ideas archive [--dry-run]</code></span>
+            <span class="band-engine">Google Sheets</span>
+          </li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="panel-yt" aria-labelledby="tab-yt" data-off>
+        <h3 class="panel-h">phantom yt <span>The channel</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">info</span>
+            <span class="band-main"><span class="band-what">Read a video’s numbers from Studio</span><code>phantom yt info &lt;video&gt; [--fresh] [--days &lt;int&gt;]</code></span>
+            <span class="band-engine">YouTube Studio</span>
+          </li>
+          <li class="band">
+            <span class="band-name">channel-stats</span>
+            <span class="band-main"><span class="band-what">Read the channel’s 28-day figures</span><code>phantom yt channel-stats [--fresh] [--history]</code></span>
+            <span class="band-engine">YouTube Studio</span>
+          </li>
+          <li class="band">
+            <span class="band-name">endscreen</span>
+            <span class="band-main"><span class="band-what">Add an end screen from a template</span><code>phantom yt endscreen &lt;video&gt;... [--template &lt;name&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">add-to-playlist</span>
+            <span class="band-main"><span class="band-what">Put a video in a playlist</span><code>phantom yt add-to-playlist &lt;video&gt; &lt;playlist_id_or_name&gt;</code></span>
+            <span class="band-engine">YouTube Data API</span>
+          </li>
+          <li class="band">
+            <span class="band-name">titles</span>
+            <span class="band-main"><span class="band-what">Print a channel’s titles</span><code>phantom yt titles [&lt;channel&gt;] [--limit &lt;int&gt;] [--numbered]</code></span>
+            <span class="band-engine">YouTube Data API</span>
+          </li>
+          <li class="band">
+            <span class="band-name">count-uploads</span>
+            <span class="band-main"><span class="band-what">Count uploads over 7, 14 and 30 days</span><code>phantom yt count-uploads [&lt;channel&gt;] [--fresh]</code></span>
+            <span class="band-engine">YouTube Data API</span>
+          </li>
+          <li class="band">
+            <span class="band-name">summarize</span>
+            <span class="band-main"><span class="band-what">Summarise any video</span><code>phantom yt summarize &lt;video&gt; [--model &lt;model&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">comments</span>
+            <span class="band-main"><span class="band-what">Scrape a video’s comments</span><code>phantom yt comments &lt;video&gt; [--limit &lt;int&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="panel-broll" aria-labelledby="tab-broll" data-off>
+        <h3 class="panel-h">phantom broll <span>B-roll clips</span></h3>
+        <ul class="bands">
+          <li class="band">
+            <span class="band-name">list</span>
+            <span class="band-main"><span class="band-what">Show the templates and their variables</span><code>phantom broll list [&lt;template&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">find</span>
+            <span class="band-main"><span class="band-what">Check where a phrase is said</span><code>phantom broll find &lt;phrase&gt; [--srt &lt;word_srt&gt;] [--after &lt;timestamp&gt;]</code></span>
+            <span class="band-engine"></span>
+          </li>
+          <li class="band">
+            <span class="band-name">render</span>
+            <span class="band-main"><span class="band-what">Render every clip in a cue file</span><code>phantom broll render &lt;cue_file.json&gt; [--only &lt;file&gt;...] [--dry-run]</code></span>
+            <span class="band-engine">HyperFrames</span>
+          </li>
+          <li class="band">
+            <span class="band-name">clip</span>
+            <span class="band-main"><span class="band-what">Render one clip from flags</span><code>phantom broll clip &lt;template&gt; -o &lt;output.mp4&gt; [--cue &lt;phrase&gt;] [--var key=value...]</code></span>
+            <span class="band-engine">HyperFrames</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta wrap" aria-label="Get the code">
+  <p data-reveal>All of it is on GitHub. Read it, fork it, or lift the one script you need.</p>
+  <div class="actions" data-reveal>
+    <a class="button" href="https://github.com/hassanaziz0012/phantom-editor">Star on GitHub</a>
+    <a class="link-plain" href="https://www.youtube.com/@itshassanaziz?sub_confirmation=1">Subscribe on YouTube</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="tiles">
+  <div class="tile t-say">
+    <p class="lead">Built by Hassan Aziz for his own channel, and never finished.</p>
+    <p class="small">© 2026 Hassan Aziz. B-roll clips and thumbnails on this page are his own.</p>
+  </div>
+  <nav class="tile t-nav" aria-label="Sections">
+    <ul>
+      <li><a class="link" href="#pipeline">Pipeline</a></li>
+      <li><a class="link" href="#outputs">Outputs</a></li>
+      <li><a class="link" href="#broll">B-roll</a></li>
+      <li><a class="link" href="#videos">Videos</a></li>
+      <li><a class="link" href="#commands">Commands</a></li>
+    </ul>
+  </nav>
+  <div class="tile t-install">
+    <p class="small">To try it</p>
+    <pre class="cmd"><code>git clone https://github.com/hassanaziz0012/phantom-editor
+cd phantom-editor
+uv sync && ./install.sh</code></pre>
+  </div>
+  <div class="tile t-links">
+    <ul>
+      <li><a class="link" href="https://www.youtube.com/@itshassanaziz?sub_confirmation=1">YouTube</a></li>
+      <li><a class="link" href="https://x.com/intent/user?screen_name=nothassanaziz">X</a></li>
+      <li><a class="link" href="https://github.com/hassanaziz0012">GitHub</a></li>
+      <li><a class="link" href="https://www.hassandev.me">hassandev.me</a></li>
+    </ul>
+  </div>
+  <div class="tile t-mark" aria-hidden="true"><span>phantom</span></div>
+  <a class="tile t-go" href="https://github.com/hassanaziz0012/phantom-editor">
+    <span class="lead">Star it on GitHub</span>
+    <svg viewBox="0 0 48 48" width="56" height="56" aria-hidden="true"><path d="M8 40L40 8M14 8h26v26" fill="none" stroke="currentColor" stroke-width="4"/></svg>
+  </a>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
